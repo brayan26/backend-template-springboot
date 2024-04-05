@@ -15,14 +15,6 @@ env:
 
 
 jobs:
-  avoid-reduncy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cancel Previous Redundant Builds
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -87,5 +79,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.PROJECT_VERSION }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}`
