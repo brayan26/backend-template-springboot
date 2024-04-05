@@ -1,0 +1,45 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: backend-template
+  cloud:
+    kubernetes:
+      secrets:
+        enable-api: true
+      discovery:
+        all-namespaces: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: 1122q!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+      livenessstate:
+        enabled: true
+      readinessstate:
+      enabled: true
+
+app:
+  version: @project.version@
+  name: @project.name@
