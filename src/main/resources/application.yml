@@ -1,7 +1,16 @@
 server:
   port: 8001
 
+#Logger
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+
 spring:
+  profiles:
+    active: local
   application:
     name: backend-template
   cloud:
@@ -10,21 +19,8 @@ spring:
         enable-api: true
       discovery:
         all-namespaces: true
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    generate-ddl: true
-  datasource:
-    url: jdbc:mysql://localhost:3306/test
-    username: root
-    password: 1122q!
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
-
+#Actuator
 management:
   endpoints:
     web:
@@ -40,6 +36,7 @@ management:
       readinessstate:
       enabled: true
 
+#Project info
 app:
   version: @project.version@
   name: @project.name@
