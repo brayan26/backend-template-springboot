@@ -8,4 +8,5 @@ public interface IUserRepository {
     User create(User user);
     List<User> find();
     void delete(Long id);
+    void validateUser(String username, String password);
 }

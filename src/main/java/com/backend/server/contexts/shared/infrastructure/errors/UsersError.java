@@ -27,6 +27,12 @@ public class UsersError {
         return this;
     }
 
+    public UsersError invalidUser() {
+        this.code = "USR-02";
+        this.error = "Invalid user password";
+        return this;
+    }
+
     public UsersError build() {
         return this;
     }

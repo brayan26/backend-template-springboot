@@ -71,4 +71,20 @@ public class MysqlUserService implements IUserRepository {
                     UsersError.create().notFound().build());
         }
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public void validateUser(String username, String password) {
+        Optional<UserEntity> optional = repository.findByUsername(username);
+        if (optional.isEmpty()) {
+            throw new GenericNotFoundException(
+                    String.format("<MysqlUserService - validateUser> username '%s' not exists", username),
+                    UsersError.create().notFound().build());
+        }
+        if (!encoder.matches(password, optional.get().getPassword())) {
+            throw new GenericBadRequestException(
+                    String.format("<MysqlUserService - validateUser> password for the username '%s' does not match", username),
+                    UsersError.create().invalidUser().build());
+        }
+    }
 }

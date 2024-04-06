@@ -1,12 +1,7 @@
 server:
+  servlet:
+    context-path: /api/v1
   port: 8001
-
-#Logger
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
 
 spring:
   profiles:
