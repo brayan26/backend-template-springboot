@@ -1,8 +1,8 @@
 package com.backend.server.contexts.users.infrastructure.services;
 
-import com.backend.server.contexts.shared.infrastructure.errors.UsersError;
-import com.backend.server.contexts.shared.infrastructure.exceptions.GenericBadRequestException;
-import com.backend.server.contexts.shared.infrastructure.exceptions.GenericNotFoundException;
+import com.backend.server.contexts.shared.domain.errors.UsersError;
+import com.backend.server.contexts.shared.domain.exceptions.GenericBadRequestException;
+import com.backend.server.contexts.shared.domain.exceptions.GenericNotFoundException;
 import com.backend.server.contexts.users.domain.dto.User;
 import com.backend.server.contexts.users.domain.repositories.IUserRepository;
 import com.backend.server.contexts.users.infrastructure.orm.mysql.entities.UserEntity;

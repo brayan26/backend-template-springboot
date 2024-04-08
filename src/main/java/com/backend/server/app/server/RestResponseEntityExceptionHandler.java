@@ -1,7 +1,7 @@
 package com.backend.server.app.server;
 
-import com.backend.server.contexts.shared.infrastructure.exceptions.GenericBadRequestException;
-import com.backend.server.contexts.shared.infrastructure.exceptions.GenericNotFoundException;
+import com.backend.server.contexts.shared.domain.exceptions.GenericBadRequestException;
+import com.backend.server.contexts.shared.domain.exceptions.GenericNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.backend.server.contexts.shared.infrastructure.errors;
+package com.backend.server.contexts.shared.domain.errors;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

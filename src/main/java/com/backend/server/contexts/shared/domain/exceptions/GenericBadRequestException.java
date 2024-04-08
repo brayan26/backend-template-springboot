@@ -1,4 +1,4 @@
-package com.backend.server.contexts.shared.infrastructure.exceptions;
+package com.backend.server.contexts.shared.domain.exceptions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
