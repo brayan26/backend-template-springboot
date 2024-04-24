@@ -12,20 +12,19 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - spring_network
-
-  ms-backend-spring-template:
+  ms-backend-api:
     build: ./
     container_name: ms-spring-template
     environment:
       SPRING_PROFILES_ACTIVE: docker
     ports:
-      - "8081:8081"
+      - "8001:8001"
     depends_on:
       - mysql
     networks:
       - spring_network
 volumes:
-  mysql_write_data:
+  mysql_data:
     name: mysql_data
 networks:
   spring_network:

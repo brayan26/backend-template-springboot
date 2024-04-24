@@ -1,16 +1,21 @@
-FROM maven:3.9.6-amazoncorretto-17 as builder
+FROM amazoncorretto:17-alpine-jdk
 
 WORKDIR /app
 COPY ./pom.xml /app
 
+ENV MVNW=/app/mvnw
+COPY ./.mvn /app/.mvn
+COPY ./mvnw /app/mvnw
 COPY ./src /app/src
-RUN mvn clean package -DskipTests
 
-FROM amazoncorretto:17-alpine-jdk
-WORKDIR /app
+RUN cd /app
+RUN $MVNW dependency:go-offline
+RUN $MVNW clean package -DskipTests
 
 RUN mkdir ./logs
-COPY --from=builder /app/target/backend-template-api-*.jar ./app.jar
-EXPOSE 8001
+COPY /*/backend-template-api-*.jar /app.jar
+EXPOSE 9006
+
+RUN rm -R /app
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

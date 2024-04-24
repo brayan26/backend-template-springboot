@@ -4,23 +4,17 @@ import com.backend.server.contexts.shared.domain.errors.UsersError;
 import com.backend.server.contexts.shared.domain.exceptions.GenericBadRequestException;
 import com.backend.server.contexts.users.application.create.UserCreator;
 import com.backend.server.contexts.users.application.find.UserValidator;
-import com.backend.server.contexts.users.application.find.UsersFinder;
-import com.backend.server.contexts.users.application.update.UserEraser;
 import com.backend.server.contexts.users.domain.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class UserService {
+public class UserServiceHandler {
     @Autowired
     private UserCreator userCreatorUseCase;
     @Autowired
     private UserValidator userValidatorUseCase;
-
-
     @Autowired
     private PasswordEncoder encoder;
 
@@ -34,7 +28,7 @@ public class UserService {
         User user = userValidatorUseCase.run(username);
         if (!encoder.matches(password, user.getPassword())) {
             throw new GenericBadRequestException(
-                    String.format("<UserService - validateUser> password for the username '%s' does not match", username),
+                    String.format("<UserServiceHandler - validateUser> password for the username '%s' does not match", username),
                     UsersError.create().invalidUser().build());
         }
     }
