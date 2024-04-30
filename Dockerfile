@@ -13,9 +13,9 @@ RUN $MVNW dependency:go-offline
 RUN $MVNW clean package -DskipTests
 
 RUN mkdir ./logs
-COPY /*/backend-template-api-*.jar /app.jar
+COPY target/backend-template-api-*.jar /app.jar
 EXPOSE 9006
 
 RUN rm -R /app
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
