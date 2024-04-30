@@ -10,7 +10,7 @@ COPY ./src /app/src
 
 RUN $MVNW clean package -DskipTests
 
-COPY target/backend-template-api-*.jar ./app.jar
+COPY /*/target/backend-template-api-*.jar ./app.jar
 EXPOSE 8001
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/target/*.jar"]
