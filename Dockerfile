@@ -8,14 +8,9 @@ COPY ./.mvn /app/.mvn
 COPY ./mvnw /app/mvnw
 COPY ./src /app/src
 
-RUN cd /app
-RUN $MVNW dependency:go-offline
 RUN $MVNW clean package -DskipTests
 
-RUN mkdir ./logs
-COPY target/backend-template-api-*.jar /app.jar
-EXPOSE 9006
-
-RUN rm -R /app
+COPY target/backend-template-api-*.jar ./app.jar
+EXPOSE 8001
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
