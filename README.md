@@ -230,11 +230,11 @@ public abstract class StringValueObject {
   }
 
   public boolean equalsTo(String anotherValue) {
-    return this.value === anotherValue;
+    return this.value == anotherValue;
   }
 
   public boolean differentTo(String anotherValue) {
-    return this.value !== anotherValue;
+    return this.value != anotherValue;
   }
 
   public String toString() {
