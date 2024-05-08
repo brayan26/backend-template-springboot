@@ -21,4 +21,5 @@ public class BackendTemplateApiApplication {
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 }
